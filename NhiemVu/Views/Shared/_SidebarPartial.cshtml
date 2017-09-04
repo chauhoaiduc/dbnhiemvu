@@ -5,8 +5,25 @@
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-right w3-padding-16" title="close Sidebar">×</button>
     </div>
     <div class="w3-bar-block">
-        <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("HopDongChoXacNhan","HopDong")">Hợp đồng chờ xác nhận</a>
-        <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("QuanLyHopDong","HopDong")">Quản lý hợp đồng</a>
-        <a class="w3-bar-item w3-button w3-hover-blue" href="">Contact</a>
+        <button onclick="myFunction('nhiemvu')" class="w3-bar-item w3-button w3-hover-blue">Nhiệm vụ</button>
+        <div id="nhiemvu" class="w3-hide w3-animate-zoom">
+            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuMoi","Account")">Nhiệm vụ mới</a>
+            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuDaNhan","HopDong")">Nhiệm vụ đã nhận</a>
+            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuChoDuyet","HopDong")">Nhiệm vụ chờ duyệt</a>
+            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuDangSuaLoi","HopDong")">Nhiệm vụ đang sửa lỗi</a>
+            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuDangSuaLoi","HopDong")">Nhiệm vụ đã hoàn thành</a>
+        </div>
+
     </div>
 </div>
+
+<script>
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>

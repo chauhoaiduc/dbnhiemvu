@@ -49,7 +49,7 @@ namespace NhiemVu.Helper
             HttpContext.Current.Session["user"] = null;
             if (HttpContext.Current.Request.Cookies["userID"] != null)
             {
-                HttpContext.Current.Request.Cookies["userID"].Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Current.Response.Cookies["userID"].Expires = DateTime.Now.AddDays(-1);
             }
         }
     }

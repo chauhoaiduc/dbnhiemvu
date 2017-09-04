@@ -913,6 +913,11 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\ChiTietNhiemVu.cshtml" />
     <Content Include="Views\Account\HinhNhiemVuPartial.cshtml" />
+    <Content Include="Views\Account\NhiemVuMoi.cshtml" />
+    <Content Include="Views\Account\NhiemVuDaNhan.cshtml" />
+    <Content Include="Views\Account\NhiemVuChoDuyet.cshtml" />
+    <Content Include="Views\Account\NhiemVuDangSuaLoi.cshtml" />
+    <Content Include="Views\Account\NhiemVuDaHoanThanh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

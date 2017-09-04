@@ -1,22 +1,19 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿@using NhiemVu.Helper
+@if (CurrentContext.IsLogged())
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
-    }
+    <a id="logoutLink" class="w3-bar-item w3-button w3-right">Logout</a>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <a href="@Url.Action("Login", "Account")" class="w3-bar-item w3-button w3-right">Login</a>
 }
+
+<form id="frmLogout" method="post" action="@Url.Action("Logout","Account")"></form>
+
+<script>
+    // start script logout
+    $('#logoutLink').on('click', function () {
+        $('#frmLogout').submit();
+    });
+    // end script logout
+</script>

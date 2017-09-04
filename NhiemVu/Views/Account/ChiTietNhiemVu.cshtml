@@ -37,9 +37,47 @@
             $(curModal).css("display", "none");
             $(nextModal).css("display", "block");
         }
+
+        function doiMauTenTrangThai(iMaTrangThaiCode){
+            if(iMaTrangThaiCode==1)
+            {
+                $("#vTenTrangThai").addClass("w3-text-blue");
+            }else if(iMaTrangThaiCode==2){
+                if($("#vTenTrangThai").hasClass("w3-text-blue")){
+                    $("#vTenTrangThai").removeClass("w3-text-blue");
+                }
+                if($("#vTenTrangThai").hasClass("w3-text-red")){
+                    $("#vTenTrangThai").removeClass("w3-text-red");
+                }
+                $("#vTenTrangThai").addClass("w3-text-khaki");
+            }else if(iMaTrangThaiCode==3){
+                $("#vTenTrangThai").removeClass("w3-text-khaki");
+                $("#vTenTrangThai").addClass("w3-text-green");
+            }else if(iMaTrangThaiCode==4){
+                $("#vTenTrangThai").removeClass("w3-text-green");
+                $("#vTenTrangThai").addClass("w3-text-teal");
+            }else if(iMaTrangThaiCode==5){
+                $("#vTenTrangThai").removeClass("w3-text-green");
+                $("#vTenTrangThai").addClass("w3-text-red");
+            }
+        }
+
         $(function () {
+            if(@Model.iMaTrangThaiCode==2)
+            {
+                $("#btnTrangThai").text("Trả nhiệm vụ");
+            }else if(@Model.iMaTrangThaiCode==5)
+            {
+                $("#btnTrangThai").text("Sửa lỗi");
+            }
+
+            doiMauTenTrangThai(@Model.iMaTrangThaiCode);
+
+            
+
+
             $.ajax({
-                url:"@Url.Action("GetTapTinNhiemVu","Account")",
+                url:"@Url.Action("GetTapTinNhiemVu", "Account")",
                 type:"post",
                 dataType:"json",
                 data:{"iMaNhiemVuCode":@Model.iMaNhiemVuCode},
@@ -78,9 +116,9 @@
             });
         })
 
-        function thayDoiTrangThai(){
+        function thayDoiTrangThai(curModal,iMaTrangThaiCode){
             $.ajax({
-                url:"@Url.Action("ThayDoiTrangThai","Account")",
+                url:"@Url.Action("ThayDoiTrangThai", "Account")",
                 type:"post",
                 dataType:"text",
                 data:{"iMaNhiemVuCode":@Model.iMaNhiemVuCode},
@@ -88,13 +126,17 @@
                     $(".main-thongbao").empty();
                     var html ='';
                     if(result==='True'){
-                        if(@Model.iMaTrangThaiCode == 1)
+                        doiMauTenTrangThai(iMaTrangThaiCode);
+                        if(iMaTrangThaiCode == 2)
                         {
                             html += '<h2 id="thongbao" class="w3-center">Đã nhận nhiệm vụ thành công !</h2>';
                             $("#btnTrangThai").text("Giao nhiệm vụ");
                             $("#vTenTrangThai").text("Đang thực hiện");
-                        }else if(@Model.iMaTrangThaiCode == 2){
-                            html += '<h2 id="thongbao" class="w3-center">Đã giao nhiệm vụ thành công !</h2>';
+                            $("#btnTrangThai").attr("onclick","btnTrangThaiClick("+iMaTrangThaiCode+")");
+                        }else if(iMaTrangThaiCode == 3){
+                            html += '<h2 id="thongbao" class="w3-center">Đã báo cáo thành công !</h2>';
+                            $("#vTenTrangThai").text("Đang chờ duyệt");
+                            $("#btnTrangThai").hide();
                         }
 
                     }else{
@@ -102,7 +144,7 @@
                     }
                     html += '<center><button class="w3-btn w3-padding-large w3-teal w3-hover-green w3-center" onclick="closeModal()">OK</button><center>';
                     $('.main-thongbao').append(html);
-                    openModal('#modal-comfirm',"#modal-thongbao")
+                    openModal(curModal,"#modal-thongbao")
                 }
             });
         }
@@ -190,35 +232,6 @@
             }
             event.target.closest(".w3-bar-item").remove();
         }
-        //function uploadlinkfile(iMaBaoCaoCode){
-        //    var inputfile = $("input[name='linkfile']");
-        //    var links = '';
-        //    for (i = 0; i < inputfile.length; i++) {
-        //        if(inputfile.val()!='')
-        //        {
-        //            links+=','+inputfile[i].val();
-        //        }
-        //    }
-        //    $.ajax({
-        //        url: "/Account/UploadLinkFileBaoCao?iMaBaoCaoCode=" + iMaBaoCaoCode,
-        //        type: "POST",
-        //        contentType: false,
-        //        processData: false,
-        //        data: {"links":links},
-        //        success: function (result) {
-        //            var html = '';
-        //            if (result === 'True') {
-        //                html = '<h2 id="thongbao" class="w3-center">Đã báo cáo thành công !</h2>';
-        //            }
-        //            else {
-        //                html = '<h2 id="thongbao" class="w3-center">Đã báo cáo thất bại !</h2>';
-        //            }
-        //            html += '<center><a class="w3-btn w3-padding-large w3-teal w3-hover-green w3-center" onclick="closeModal()">OK</a></center>';
-        //            $(".main-thongbao").append(html);
-        //            openModal('#modal-baocao', '#modal-thongbao');
-        //        }
-        //    });
-        //}
 
         function uploadfilebaocao(iMaBaoCaoCode) {
             var inputfile = $("input[type='file']");
@@ -230,54 +243,48 @@
                     data.append("FileUpload" + i, file);
                 }
             }
-            if(inputfile.val()!='')
-            {
-                $.ajax({
-                    url: "/Account/UploadFileBaoCao?iMaBaoCaoCode=" + iMaBaoCaoCode,
-                    type: "POST",
-                    contentType: false,
-                    processData: false,
-                    data: data,
-                    success: function (result) {
-                        var html = '';
-                        if (result === 'True') {
-                            html='<h2 id="thongbao" class="w3-center">Đã báo cáo thành công !</h2>';
-                        }
-                        else {
-                            
-                            html = '<h2 id="thongbao" class="w3-center">Đã báo cáo thất bại !</h2>';
-                            html += '<center><a class="w3-btn w3-padding-large w3-teal w3-hover-green w3-center" onclick="closeModal()">OK</a></center>';
-                            $(".main-thongbao").append(html);
-                            openModal('#modal-baocao', '#modal-thongbao');
-                        }
-
+            $.ajax({
+                url: "/Account/UploadFileBaoCao?iMaBaoCaoCode=" + iMaBaoCaoCode,
+                type: "POST",
+                contentType: false,
+                processData: false,
+                dataType:"text",
+                data: data,
+                success: function (result) {
+                    var html = '';
+                    if (result === 'True') {
+                        thayDoiTrangThai('#modal-baocao',3)
                     }
-                });
-            }
+                    else {
+
+                        html = '<h2 id="thongbao" class="w3-center">Đã báo cáo thất bại !</h2>';
+                        html += '<center><a class="w3-btn w3-padding-large w3-teal w3-hover-green w3-center" onclick="closeModal()">OK</a></center>';
+                        $(".main-thongbao").append(html);
+                        openModal('#modal-baocao', '#modal-thongbao');
+                    }
+                }
+            });
         }
 
         function frmBaoCaoNhiemVuSubmit(){
             if ($("#countErrTapTin").val() == 0 && $("#frmBaoCaoNhiemVu").valid()) {
                 $.ajax({
-                    url:"@Url.Action("BaoCaoNhiemVu","Account")",
+                    url:"@Url.Action("BaoCaoNhiemVu", "Account")",
                     type:"post",
                     dataType:"text",
                     data:{
                         "iMaNhiemVuCode":@Model.iMaNhiemVuCode,
-                        "vMoTa":$("input[name='vMoTa']").val(),
-                        "vDuongDanTapTin":$("input[type='file']")
+                        "vMoTa":$("#vMoTa").val(),
+                        "vDuongDanTapTin":$("input[type='linkfile']").val()
                     },
                     success: function(result){
                         if(result!=0)
                         {
-                            if($("input[type='file']").length>0)
+                            if($("input[type='file']").length>1)
                             {
                                 uploadfilebaocao(result);
                             }else{
-                                var html = '<h2 id="thongbao" class="w3-center">Đã báo cáo thành công !</h2>';
-                                html += '<center><a class="w3-btn w3-padding-large w3-teal w3-hover-green w3-center" onclick="closeModal()">OK</a></center>';
-                                $(".main-thongbao").append(html);
-                                openModal('#modal-baocao', '#modal-thongbao');
+                                thayDoiTrangThai('#modal-baocao',3)
                             }
                         }else{
                             var html = '<h2 id="thongbao" class="w3-center">Đã báo cáo thất bại !</h2>';
@@ -291,6 +298,14 @@
             else{}
         }
 
+        function btnTrangThaiClick(iMaTrangThaiCode){
+            if(iMaTrangThaiCode == 1)
+            {
+                openModal('','#modal-comfirm');
+            }else if(iMaTrangThaiCode == 2){
+                openModal('','#modal-baocao');
+            }
+        }
         //function xoaLink(event){
         //    $(event.target).closest('.input-group').remove();
         //}
@@ -326,7 +341,7 @@
     </div>
     <div class="w3-row w3-margin">
         <div class="w3-third w3-border-right w3-border-green">
-            @Html.Action("HinhNhiemVuPartial", "Account",new { iMaNhiemVuCode=Model.iMaNhiemVuCode})
+            @Html.Action("HinhNhiemVuPartial", "Account", new { iMaNhiemVuCode = Model.iMaNhiemVuCode })
         </div>
         <div class="w3-twothird">
             <div class="w3-content w3-margin w3-padding">
@@ -362,7 +377,10 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="w3-center">
-                            <button id="btnTrangThai" class="w3-button w3-white w3-border w3-border-blue w3-round-large" onclick="openModal('','#modal-baocao')">Nhận nhiệm vụ</button>
+                            @if (Model.iMaTrangThaiCode != 3 && Model.iMaTrangThaiCode != 4)
+                            {
+                                <button id="btnTrangThai" class="w3-button w3-white w3-border w3-border-blue w3-round-large" onclick="btnTrangThaiClick(@Model.iMaTrangThaiCode)">Nhận nhiệm vụ</button>
+                            }
                         </td>
                     </tr>
                 </table>
@@ -386,7 +404,7 @@
                     <center>
                         <h2 id="title-modal">Bạn đã sẵn sàng nhận nhiệm vụ này chưa ?</h2>
                         <a class="w3-btn w3-padding-large w3-teal w3-hover-green w3-center w3-margin-right" onclick="closeModal()">Quay lại</a>
-                        <a class="w3-btn w3-padding-large w3-teal w3-hover-green w3-center w3-margin-left" onclick="thayDoiTrangThai()">Đã sẵn sàng</a>
+                        <a class="w3-btn w3-padding-large w3-teal w3-hover-green w3-center w3-margin-left" onclick="thayDoiTrangThai('#modal-comfirm',2)">Đã sẵn sàng</a>
                     </center>
                     
                 </div>
@@ -407,8 +425,8 @@
                         <form id="frmBaoCaoNhiemVu">
                             <h2>Báo cáo nhiệm vụ</h2>
                             <div class="form-group w3-row">
-                                <label for="comment" class="w3-container w3-quarter">Mô tả báo cáo:</label>
-                                <textarea name="vMoTa" class="w3-container w3-padding-large form-control  w3-threequarter" required></textarea>
+                                <label for="vMoTa" class="w3-container w3-quarter">Mô tả báo cáo:</label>
+                                <textarea id="vMoTa" class="w3-container w3-padding-large form-control  w3-threequarter" required></textarea>
                             </div>
                             <div class="form-group w3-row">
                                 <label class="w3-container w3-quarter">Link file báo cáo:</label>

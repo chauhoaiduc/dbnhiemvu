@@ -8,6 +8,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Helper/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Helper/tether-1.3.3/dist/js/tether.min.js"></script>
     <script src="~/Helper/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
     <script src="~/Helper/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>
     <link href="~/Content/w3csss.css" rel="stylesheet" />
@@ -18,7 +19,7 @@
     <center>
         <span class="w3-xxxlarge w3-margin-top"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
 
-        <div class="w3-container col-md-5 my-top">
+        <div class="my-content w3-container col-md-5 my-top">
             @if (ViewBag.Msg != null)
             {
                 <div class="alert alert-danger alert-dismissible" role="alert">
@@ -28,7 +29,6 @@
                     @ViewBag.Msg
                 </div>
             }
-
             <form action="@Url.Action("Login","Account")" method="post" class="w3-container">
                 <div class="w3-section">
                     <label><b>Tên đăng nhập</b></label>
@@ -55,15 +55,15 @@
                             <label class="w3-block"><b class="w3-text-black">Tên đăng nhập</b></label>
                             <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Nhập tên đăng nhập ở đây..." name="username">
                             <label class="w3-block"><b class="w3-text-black">Mật khẩu</b></label>
-                            <input class="w3-input w3-border" type="text" placeholder="Nhập mật khẩu ở đây..." id="pwd" name="pwd">
+                            <input class="w3-input w3-border" type="password" placeholder="Nhập mật khẩu ở đây..." id="pwd" name="pwd">
                             <label class="w3-block"><b class="w3-text-black">Nhập lại mật khẩu</b></label>
-                            <input class="w3-input w3-border" type="text" placeholder="Nhập lại mật khẩu ở đây..." name="repwd">
+                            <input class="w3-input w3-border" type="password" placeholder="Nhập lại mật khẩu ở đây..." name="repwd">
                             <br />
                         </div>
                     </div>
                     <footer id="footer-modal" class="w3-container w3-teal">
                         <a class="w3-btn w3-padding-large w3-hover-white" onclick="closeModal()">Hủy</a>
-                        <button onclick="frmRegisterSubmit()" class="w3-btn w3-padding-large w3-hover-white w3-right">Đăng ký</button>
+                        <a onclick="frmRegisterSubmit()" class="w3-btn w3-padding-large w3-hover-white w3-right">Đăng ký</a>
                     </footer>
                 </form>
             </div>
@@ -72,35 +72,41 @@
     <script>
         function frmRegisterSubmit()
         {
-            $.ajax({
-                url: "@Url.Action("Register","Index")",
-                type: "post",
-                dateType: "text",
-                data:{
-                    "vTenDangNhap": $("input[name='username']").val(),
-                    "vMatKhau":$("input[name='pwd']").val()
-                },
-                success: function (result) {
-                    if (result === 'True')
-                    {
+            if ($("#frmRegister").valid())
+            {
+                $.ajax({
+                    url: "@Url.Action("Register","Account")",
+                    type: "post",
+                    dateType: "text",
+                    data:{
+                        "vTenDangNhap": $("input[name='username']").val(),
+                        "vMatKhau":$("input[name='pwd']").val()
+                    },
+                    success: function (result) {
                         var html = '';
-                        html+='<div class="alert alert-danger alert-dismissible" role="alert">';
-                        html+='    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
-                        html+='        <span aria-hidden="true">&times;</span>';
-                        html+='    </button>';
-                        html+='        Đăng ký thành công';
-                        html+='</div>';
-                    } else {
-                        var html = '';
-                        html += '<div class="alert alert-danger alert-dismissible" role="alert">';
-                        html += '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
-                        html += '        <span aria-hidden="true">&times;</span>';
-                        html += '    </button>';
-                        html += '        Đăng ký thất bại';
-                        html += '</div>';
+                        if (result === 'True')
+                        {
+                        
+                            html='<div class="alert alert-danger alert-dismissible" role="alert">';
+                            html+='    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                            html+='        <span aria-hidden="true">&times;</span>';
+                            html+='    </button>';
+                            html+='        Đăng ký thành công';
+                            html+='</div>';
+                        } else {
+                            html = '<div class="alert alert-danger alert-dismissible" role="alert">';
+                            html += '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                            html += '        <span aria-hidden="true">&times;</span>';
+                            html += '    </button>';
+                            html += '        Đăng ký thất bại';
+                            html += '</div>';
+                        }
+                        closeModal();
+                        $(".my-content").prepend(html);
                     }
-                }
-            });
+                });
+            }
+            
         }
 
         $("#frmRegister").validate({
@@ -109,7 +115,8 @@
                     required: true
                 },
                 pwd: {
-                    required: true
+                    required: true,
+                    minlength: 6
                 },
                 repwd: {
                     required: true,
@@ -117,11 +124,14 @@
                 }
             },
             messages: {
-                username: "Không được bỏ trống",
-                pwd: "Không được bỏ trống",
+                username: "Không được bỏ trống !",
+                pwd: {
+                    required: "Không được bỏ trống !",
+                    minlength: "Mật khẩu tối thiểu 6 ký tự !"
+                },
                 repwd: {
-                    required: "Không được bỏ trống",
-                    equalTo: "Nhập lại mật khẩu không đúng"
+                    required: "Không được bỏ trống !",
+                    equalTo: "Nhập lại mật khẩu không đúng !"
                 },
             },
             errorClass: "form-control-feedback",
