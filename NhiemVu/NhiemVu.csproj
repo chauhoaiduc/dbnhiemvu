@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\CheckLoginAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,6 +265,7 @@
     <Content Include="Content\Images\icon\txt.png" />
     <Content Include="Content\Images\icon\xlsx.png" />
     <Content Include="Content\Images\icon\zip.png" />
+    <Content Include="Content\Images\user\user.png" />
     <Content Include="Content\myslideshow.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -913,11 +915,7 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\ChiTietNhiemVu.cshtml" />
     <Content Include="Views\Account\HinhNhiemVuPartial.cshtml" />
-    <Content Include="Views\Account\NhiemVuMoi.cshtml" />
-    <Content Include="Views\Account\NhiemVuDaNhan.cshtml" />
-    <Content Include="Views\Account\NhiemVuChoDuyet.cshtml" />
-    <Content Include="Views\Account\NhiemVuDangSuaLoi.cshtml" />
-    <Content Include="Views\Account\NhiemVuDaHoanThanh.cshtml" />
+    <Content Include="Views\Account\TrangCaNhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

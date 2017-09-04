@@ -1,29 +1,20 @@
-﻿
+﻿@using NhiemVu.Helper
 <div class="w3-sidebar w3-light-grey w3-card-4 w3-animate-left" style="width: 180px;display:block;z-index:0" id="mySidebar">
-    <div class="w3-bar w3-dark-grey">
-        <span class="w3-bar-item w3-padding-16">Menu</span>
+    <div class="w3-bar w3-gray">
+        <h3 class="w3-bar-item w3-padding-16" id="username">
+            <img src="~/Content/Images/user/user.png" width="50" height="50" style="border-radius:50px;"/>
+            @CurrentContext.GetUser().vTenDangNhap
+        </h3>
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-right w3-padding-16" title="close Sidebar">×</button>
     </div>
     <div class="w3-bar-block">
-        <button onclick="myFunction('nhiemvu')" class="w3-bar-item w3-button w3-hover-blue">Nhiệm vụ</button>
-        <div id="nhiemvu" class="w3-hide w3-animate-zoom">
-            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuMoi","Account")">Nhiệm vụ mới</a>
-            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuDaNhan","HopDong")">Nhiệm vụ đã nhận</a>
-            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuChoDuyet","HopDong")">Nhiệm vụ chờ duyệt</a>
-            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuDangSuaLoi","HopDong")">Nhiệm vụ đang sửa lỗi</a>
-            <a class="w3-bar-item w3-button w3-hover-blue" href="@Url.Action("NhiemVuDangSuaLoi","HopDong")">Nhiệm vụ đã hoàn thành</a>
-        </div>
-
+        <a href="@Url.Action("TrangCaNhan","Account")" class="w3-bar-item w3-button w3-hover-blue">Nhiệm vụ</a>
     </div>
 </div>
 
 <script>
 function myFunction(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
+    $(id).toggleClass("w3-hide");
+    $(id).toggleClass("w3-show");
 }
 </script>

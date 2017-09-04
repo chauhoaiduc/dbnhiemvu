@@ -6,198 +6,20 @@ using System.Web.Mvc;
 using NhiemVu.Models;
 using NhiemVu.Helper;
 using System.IO;
+using NhiemVu.Filters;
 
 namespace NhiemVu.Controllers
 {
     public class AccountController : Controller
     {
-        public ActionResult NhiemVuMoi()
-        {
-            return View();
-        }
-        public ActionResult GetNhiemVuMoi(int? index, string search) {
-
-            if (!index.HasValue)
-            {
-                index = 0;
-            }
-            if (search == null)
-            {
-                search = "";
-            }
-            var iMaNguoiDuocGiao = CurrentContext.GetUser().iMaThanhVienCode;
+        [CheckLogin]
+        public ActionResult TrangCaNhan() {
+            var iMaNguoiDuocGiaoCode = CurrentContext.GetUser().iMaThanhVienCode;
             using (var db = new dbnhiemvuEntities())
             {
-                var list = db.NhiemVus.ToList();
-                var result = (from b in list
-                              join t in db.ThanhViens on b.iMaNguoiDuocGiaoCode equals t.iMaThanhVienCode
-                              join tt in db.TrangThais on b.iMaTrangThaiCode equals tt.iMaTrangThaiCode
-                              where b.vTenNhiemVu.Contains(search) && b.iMaNguoiDuocGiaoCode == iMaNguoiDuocGiao && b.iMaTrangThaiCode==1
-                              select new GetBangNhiemVuViewModel
-                              {
-                                  iMaNhiemVuCode = b.iMaNhiemVuCode,
-                                  dNgayBD = b.dNgayBD,
-                                  dNgayKT = b.dNgayKT,
-                                  iMaTrangThaiCode = b.iMaTrangThaiCode,
-                                  vNguoiDuocGiao = t.vTenDangNhap,
-                                  vTenNhiemVu = b.vTenNhiemVu,
-                                  vTenTrangThai = tt.vTenTrangThai
-                              }).ToList();
-                var item = 4;
-                result = result.OrderByDescending(m => m.dNgayLap).Skip(index.Value * item).Take(item).ToList();
-                return Json(result);
-            }
-        }
-        public ActionResult NhiemVuDaNhan()
-        {
-            return View();
-        }
-        public ActionResult GetNhiemVuDaNhan(int? index, string search)
-        {
-
-            if (!index.HasValue)
-            {
-                index = 0;
-            }
-            if (search == null)
-            {
-                search = "";
-            }
-            var iMaNguoiDuocGiao = CurrentContext.GetUser().iMaThanhVienCode;
-            using (var db = new dbnhiemvuEntities())
-            {
-                var list = db.NhiemVus.ToList();
-                var result = (from b in list
-                              join t in db.ThanhViens on b.iMaNguoiDuocGiaoCode equals t.iMaThanhVienCode
-                              join tt in db.TrangThais on b.iMaTrangThaiCode equals tt.iMaTrangThaiCode
-                              where b.vTenNhiemVu.Contains(search) && b.iMaNguoiDuocGiaoCode == iMaNguoiDuocGiao && b.iMaTrangThaiCode == 2
-                              select new GetBangNhiemVuViewModel
-                              {
-                                  iMaNhiemVuCode = b.iMaNhiemVuCode,
-                                  dNgayBD = b.dNgayBD,
-                                  dNgayKT = b.dNgayKT,
-                                  iMaTrangThaiCode = b.iMaTrangThaiCode,
-                                  vNguoiDuocGiao = t.vTenDangNhap,
-                                  vTenNhiemVu = b.vTenNhiemVu,
-                                  vTenTrangThai = tt.vTenTrangThai
-                              }).ToList();
-                var item = 4;
-                result = result.OrderByDescending(m => m.dNgayLap).Skip(index.Value * item).Take(item).ToList();
-                return Json(result);
-            }
-        }
-        public ActionResult NhiemVuChoDuyet()
-        {
-            return View();
-        }
-        public ActionResult GetNhiemVuChoDuyet(int? index, string search)
-        {
-
-            if (!index.HasValue)
-            {
-                index = 0;
-            }
-            if (search == null)
-            {
-                search = "";
-            }
-            var iMaNguoiDuocGiao = CurrentContext.GetUser().iMaThanhVienCode;
-            using (var db = new dbnhiemvuEntities())
-            {
-                var list = db.NhiemVus.ToList();
-                var result = (from b in list
-                              join t in db.ThanhViens on b.iMaNguoiDuocGiaoCode equals t.iMaThanhVienCode
-                              join tt in db.TrangThais on b.iMaTrangThaiCode equals tt.iMaTrangThaiCode
-                              where b.vTenNhiemVu.Contains(search) && b.iMaNguoiDuocGiaoCode == iMaNguoiDuocGiao && b.iMaTrangThaiCode == 3
-                              select new GetBangNhiemVuViewModel
-                              {
-                                  iMaNhiemVuCode = b.iMaNhiemVuCode,
-                                  dNgayBD = b.dNgayBD,
-                                  dNgayKT = b.dNgayKT,
-                                  iMaTrangThaiCode = b.iMaTrangThaiCode,
-                                  vNguoiDuocGiao = t.vTenDangNhap,
-                                  vTenNhiemVu = b.vTenNhiemVu,
-                                  vTenTrangThai = tt.vTenTrangThai
-                              }).ToList();
-                var item = 4;
-                result = result.OrderByDescending(m => m.dNgayLap).Skip(index.Value * item).Take(item).ToList();
-                return Json(result);
-            }
-        }
-        public ActionResult NhiemVuDangSuaLoi()
-        {
-            return View();
-        }
-        public ActionResult NhiemVuDangSuaLoi(int? index, string search)
-        {
-
-            if (!index.HasValue)
-            {
-                index = 0;
-            }
-            if (search == null)
-            {
-                search = "";
-            }
-            var iMaNguoiDuocGiao = CurrentContext.GetUser().iMaThanhVienCode;
-            using (var db = new dbnhiemvuEntities())
-            {
-                var list = db.NhiemVus.ToList();
-                var result = (from b in list
-                              join t in db.ThanhViens on b.iMaNguoiDuocGiaoCode equals t.iMaThanhVienCode
-                              join tt in db.TrangThais on b.iMaTrangThaiCode equals tt.iMaTrangThaiCode
-                              where b.vTenNhiemVu.Contains(search) && b.iMaNguoiDuocGiaoCode == iMaNguoiDuocGiao && b.iMaTrangThaiCode == 5
-                              select new GetBangNhiemVuViewModel
-                              {
-                                  iMaNhiemVuCode = b.iMaNhiemVuCode,
-                                  dNgayBD = b.dNgayBD,
-                                  dNgayKT = b.dNgayKT,
-                                  iMaTrangThaiCode = b.iMaTrangThaiCode,
-                                  vNguoiDuocGiao = t.vTenDangNhap,
-                                  vTenNhiemVu = b.vTenNhiemVu,
-                                  vTenTrangThai = tt.vTenTrangThai
-                              }).ToList();
-                var item = 4;
-                result = result.OrderByDescending(m => m.dNgayLap).Skip(index.Value * item).Take(item).ToList();
-                return Json(result);
-            }
-        }
-        public ActionResult NhiemVuDaHoanThanh()
-        {
-            return View();
-        }
-        public ActionResult NhiemVuDaHoanThanh(int? index, string search)
-        {
-
-            if (!index.HasValue)
-            {
-                index = 0;
-            }
-            if (search == null)
-            {
-                search = "";
-            }
-            var iMaNguoiDuocGiao = CurrentContext.GetUser().iMaThanhVienCode;
-            using (var db = new dbnhiemvuEntities())
-            {
-                var list = db.NhiemVus.ToList();
-                var result = (from b in list
-                              join t in db.ThanhViens on b.iMaNguoiDuocGiaoCode equals t.iMaThanhVienCode
-                              join tt in db.TrangThais on b.iMaTrangThaiCode equals tt.iMaTrangThaiCode
-                              where b.vTenNhiemVu.Contains(search) && b.iMaNguoiDuocGiaoCode == iMaNguoiDuocGiao && b.iMaTrangThaiCode == 4
-                              select new GetBangNhiemVuViewModel
-                              {
-                                  iMaNhiemVuCode = b.iMaNhiemVuCode,
-                                  dNgayBD = b.dNgayBD,
-                                  dNgayKT = b.dNgayKT,
-                                  iMaTrangThaiCode = b.iMaTrangThaiCode,
-                                  vNguoiDuocGiao = t.vTenDangNhap,
-                                  vTenNhiemVu = b.vTenNhiemVu,
-                                  vTenTrangThai = tt.vTenTrangThai
-                              }).ToList();
-                var item = 4;
-                result = result.OrderByDescending(m => m.dNgayLap).Skip(index.Value * item).Take(item).ToList();
-                return Json(result);
+                ViewBag.TrangThai = db.TrangThais.ToList();
+                var list = db.NhiemVus.Where(m => m.iMaNguoiDuocGiaoCode == iMaNguoiDuocGiaoCode).ToList();
+                return View(list);
             }
         }
         public bool UploadFileBaoCao(int iMaBaoCaoCode)
@@ -460,6 +282,7 @@ namespace NhiemVu.Controllers
             return View();
         }
         // GET: Account
+        [CheckLogin]
         public ActionResult Index()
         {
             using (var db = new dbnhiemvuEntities())

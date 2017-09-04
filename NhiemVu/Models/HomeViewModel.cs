@@ -5,6 +5,10 @@ using System.Web;
 
 namespace NhiemVu.Models
 {
+    public class DemNhiemVu {
+        public Nullable<int> iMaTrangThaiCode { get; set; }
+        public int iSoLuong { get; set; }
+    }
     public class BaoCaoNhiemVuViewModel {
         public int iMaNhiemVuCode { get; set; }
         public string vMoTa { get; set; }
