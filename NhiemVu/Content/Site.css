@@ -1,0 +1,25 @@
+﻿
+
+table.comfrim tr > td:first-child {
+    background-color: #009688!important; 
+    color:white;
+}
+table.comfrim thead {
+        display:none;
+    }
+
+a:hover{
+    text-decoration:none;
+}
+
+ul, li {
+    display: list-item;
+    list-style: none;
+}
+
+.truncate {
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

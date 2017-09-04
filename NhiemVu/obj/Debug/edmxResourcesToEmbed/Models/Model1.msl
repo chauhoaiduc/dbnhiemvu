@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbnhiemvuModelStoreContainer" CdmEntityContainer="dbnhiemvuEntities">
+    <EntitySetMapping Name="Hinhs">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.Hinh">
+        <MappingFragment StoreEntitySet="Hinh">
+          <ScalarProperty Name="iMaNhiemVuCode" ColumnName="iMaNhiemVuCode" />
+          <ScalarProperty Name="iMaHinhCode" ColumnName="iMaHinhCode" />
+          <ScalarProperty Name="vDuongDan" ColumnName="vDuongDan" />
+          <ScalarProperty Name="iTrangThai" ColumnName="iTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhiemVus">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.NhiemVu">
+        <MappingFragment StoreEntitySet="NhiemVu">
+          <ScalarProperty Name="dNgayLap" ColumnName="dNgayLap" />
+          <ScalarProperty Name="iMaNhiemVuCode" ColumnName="iMaNhiemVuCode" />
+          <ScalarProperty Name="vTenNhiemVu" ColumnName="vTenNhiemVu" />
+          <ScalarProperty Name="vMoTa" ColumnName="vMoTa" />
+          <ScalarProperty Name="iMaNguoiDangCode" ColumnName="iMaNguoiDangCode" />
+          <ScalarProperty Name="iMaNguoiDuocGiaoCode" ColumnName="iMaNguoiDuocGiaoCode" />
+          <ScalarProperty Name="dNgayBD" ColumnName="dNgayBD" />
+          <ScalarProperty Name="dNgayKT" ColumnName="dNgayKT" />
+          <ScalarProperty Name="iMaTrangThaiCode" ColumnName="iMaTrangThaiCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quyens">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.Quyen">
+        <MappingFragment StoreEntitySet="Quyen">
+          <ScalarProperty Name="iMaQuyenCode" ColumnName="iMaQuyenCode" />
+          <ScalarProperty Name="vTenQuyen" ColumnName="vTenQuyen" />
+          <ScalarProperty Name="iTrangThai" ColumnName="iTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThanhViens">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.ThanhVien">
+        <MappingFragment StoreEntitySet="ThanhVien">
+          <ScalarProperty Name="iMaThanhVienCode" ColumnName="iMaThanhVienCode" />
+          <ScalarProperty Name="vTenDangNhap" ColumnName="vTenDangNhap" />
+          <ScalarProperty Name="vMatKhau" ColumnName="vMatKhau" />
+          <ScalarProperty Name="iTrangThai" ColumnName="iTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThanhVien_Quyen">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.ThanhVien_Quyen">
+        <MappingFragment StoreEntitySet="ThanhVien-Quyen">
+          <ScalarProperty Name="iMaThanhVienCode" ColumnName="iMaThanhVienCode" />
+          <ScalarProperty Name="iMaQuyenCode" ColumnName="iMaQuyenCode" />
+          <ScalarProperty Name="iTrangThai" ColumnName="iTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrangThais">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.TrangThai">
+        <MappingFragment StoreEntitySet="TrangThai">
+          <ScalarProperty Name="iMaTrangThaiCode" ColumnName="iMaTrangThaiCode" />
+          <ScalarProperty Name="vTenTrangThai" ColumnName="vTenTrangThai" />
+          <ScalarProperty Name="iTrangThai" ColumnName="iTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TapTins">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.TapTin">
+        <MappingFragment StoreEntitySet="TapTin">
+          <ScalarProperty Name="vTenTapTin" ColumnName="vTenTapTin" />
+          <ScalarProperty Name="iMaNhiemVuCode" ColumnName="iMaNhiemVuCode" />
+          <ScalarProperty Name="iTrangThai" ColumnName="iTrangThai" />
+          <ScalarProperty Name="vDuongDan" ColumnName="vDuongDan" />
+          <ScalarProperty Name="iMaFileCode" ColumnName="iMaFileCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietLois">
+      <EntityTypeMapping TypeName="dbnhiemvuModel.ChiTietLoi">
+        <MappingFragment StoreEntitySet="ChiTietLoi">
+          <ScalarProperty Name="iTrangThai" ColumnName="iTrangThai" />
+          <ScalarProperty Name="vChiTietLoi" ColumnName="vChiTietLoi" />
+          <ScalarProperty Name="iMaNhiemVuCode" ColumnName="iMaNhiemVuCode" />
+          <ScalarProperty Name="iMaChiTietLoiCode" ColumnName="iMaChiTietLoiCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

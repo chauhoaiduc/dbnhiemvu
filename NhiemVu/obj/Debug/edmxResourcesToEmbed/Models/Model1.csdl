@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbnhiemvuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Hinh">
+    <Key>
+      <PropertyRef Name="iMaHinhCode" />
+    </Key>
+    <Property Name="iMaHinhCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vDuongDan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="iTrangThai" Type="Int32" />
+    <Property Name="iMaNhiemVuCode" Type="Int32" />
+  </EntityType>
+  <EntityType Name="NhiemVu">
+    <Key>
+      <PropertyRef Name="iMaNhiemVuCode" />
+    </Key>
+    <Property Name="iMaNhiemVuCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vTenNhiemVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="vMoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="iMaNguoiDangCode" Type="Int32" />
+    <Property Name="iMaNguoiDuocGiaoCode" Type="Int32" />
+    <Property Name="dNgayBD" Type="DateTime" Precision="0" />
+    <Property Name="dNgayKT" Type="DateTime" Precision="0" />
+    <Property Name="iMaTrangThaiCode" Type="Int32" />
+    <Property Name="dNgayLap" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Quyen">
+    <Key>
+      <PropertyRef Name="iMaQuyenCode" />
+    </Key>
+    <Property Name="iMaQuyenCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vTenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="iTrangThai" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ThanhVien">
+    <Key>
+      <PropertyRef Name="iMaThanhVienCode" />
+    </Key>
+    <Property Name="iMaThanhVienCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vTenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="vMatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="iTrangThai" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ThanhVien_Quyen">
+    <Key>
+      <PropertyRef Name="iMaThanhVienCode" />
+      <PropertyRef Name="iMaQuyenCode" />
+    </Key>
+    <Property Name="iMaThanhVienCode" Type="Int32" Nullable="false" />
+    <Property Name="iMaQuyenCode" Type="Int32" Nullable="false" />
+    <Property Name="iTrangThai" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TrangThai">
+    <Key>
+      <PropertyRef Name="iMaTrangThaiCode" />
+    </Key>
+    <Property Name="iMaTrangThaiCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vTenTrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="iTrangThai" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="dbnhiemvuEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Hinhs" EntityType="Self.Hinh" />
+    <EntitySet Name="NhiemVus" EntityType="Self.NhiemVu" />
+    <EntitySet Name="Quyens" EntityType="Self.Quyen" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="ThanhViens" EntityType="Self.ThanhVien" />
+    <EntitySet Name="ThanhVien_Quyen" EntityType="Self.ThanhVien_Quyen" />
+    <EntitySet Name="TrangThais" EntityType="Self.TrangThai" />
+    <EntitySet Name="TapTins" EntityType="dbnhiemvuModel.TapTin" />
+    <EntitySet Name="ChiTietLois" EntityType="dbnhiemvuModel.ChiTietLoi" />
+  </EntityContainer>
+  <EntityType Name="TapTin">
+    <Key>
+      <PropertyRef Name="iMaFileCode" />
+    </Key>
+    <Property Name="iMaFileCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vDuongDan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="iTrangThai" Type="Int32" />
+    <Property Name="iMaNhiemVuCode" Type="Int32" />
+    <Property Name="vTenTapTin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChiTietLoi">
+    <Key>
+      <PropertyRef Name="iMaChiTietLoiCode" />
+    </Key>
+    <Property Name="iMaChiTietLoiCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iMaNhiemVuCode" Type="Int32" Nullable="false" />
+    <Property Name="vChiTietLoi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="iTrangThai" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

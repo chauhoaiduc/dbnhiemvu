@@ -1,0 +1,975 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{771FAD8C-8248-401C-8808-392680552F51}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NhiemVu</RootNamespace>
+    <AssemblyName>NhiemVu</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\CurrentContext.cs" />
+    <Compile Include="Helper\StringUtils.cs" />
+    <Compile Include="Models\BaoCao.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietLoi.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hinh.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\NhiemVu.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhiemVuModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhiemVuModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhiemVuModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhiemVuModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhiemVuModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quyen.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TapTin.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TapTinBaoCao.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThanhVien.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThanhVien_Quyen.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrangThai.cs">
+      <DependentUpon>NhiemVuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\120\Chrysanthemum.jpg" />
+    <Content Include="Content\Images\background\main_bg.jpg" />
+    <Content Include="Content\Images\icon\blank-file.png" />
+    <Content Include="Content\Images\icon\doc.png" />
+    <Content Include="Content\Images\icon\txt.png" />
+    <Content Include="Content\Images\icon\xlsx.png" />
+    <Content Include="Content\Images\icon\zip.png" />
+    <Content Include="Content\myslideshow.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker.css" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker.min.css" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker3.css" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Helper\boostrap-datetimepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Helper\boostrap-datetimepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker-en-CA.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ar-tn.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.br.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.en-IE.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.en-NZ.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.en-ZA.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.km.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.oc.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.si.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.uz-cyrl.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.uz-latn.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="Helper\boostrap-datetimepicker\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.css" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.css" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap.css" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap.min.css" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\js\bootstrap.js" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\js\bootstrap.min.js" />
+    <Content Include="Helper\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Helper\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Helper\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Helper\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\ajaxSubmit-integration-demo.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\bootstrap\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\captcha.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\images\button.png" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\style.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\cinema\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\cinema\plan_9.jpg" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\cinema\refer_madness.jpg" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\cinema\saucer_men.jpg" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\css\cmxform.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\css\cmxformTemplate.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\css\core.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\css\reset.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\css\screen.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\custom-messages-data-demo.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\custom-methods-demo.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\dynamic-totals.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\errorcontainer-demo.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\errors-within-labels.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\file_input.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\images\bg.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\images\checked.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\images\cmxform-divider.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\images\cmxform-fieldset.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\images\loading.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\images\unchecked.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\jquerymobile.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\login\images\bg.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\login\images\header1.jpg" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\login\images\page.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\login\images\required_star.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\login\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\login\screen.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\backRequiredGray.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\back_green-fade.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\back_nav_blue.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\blank.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\button-submit.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\favicon.ico" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\help.png" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\left-nav-callout-long.png" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\login-sprite.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\logo_marketo.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\sf.png" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\step1-24.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\step2-24.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\step3-24.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\tab-sprite.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\tab_green.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\time.png" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\toggle.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\images\warning.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\jquery.maskedinput.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\mktSignup.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\step2.htm" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\marketo\stylesheet.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\milk\bg.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\milk\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\milk\left_white.png" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\milk\milk.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\milk\milk.png" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\milk\right_white.png" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\multipart\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\multipart\style.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\radio-checkbox-select-demo.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\requirejs\app.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\requirejs\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\semantic-ui\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\site-demos.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\themerollered.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\tinymce4\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\tinymce\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\tinymce\themes\simple\editor_template.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\tinymce\themes\simple\img\icons.gif" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\tinymce\themes\simple\langs\en.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\tinymce\themes\simple\skins\default\ui.css" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\tinymce\tiny_mce.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\additional-methods.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\additional-methods.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\jquery.validate.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\jquery.validate.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ar.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ar.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_az.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_az.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_bg.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_bg.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_bn_BD.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_bn_BD.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ca.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ca.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_cs.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_cs.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_da.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_da.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_de.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_de.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_el.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_el.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_es.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_es.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_es_AR.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_es_AR.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_es_PE.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_es_PE.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_et.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_et.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_eu.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_eu.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_fa.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_fa.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_fi.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_fi.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_fr.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_fr.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ge.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ge.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_gl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_gl.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_he.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_he.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_hr.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_hr.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_hu.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_hu.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_hy_AM.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_hy_AM.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_id.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_id.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_is.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_is.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_it.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_it.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ja.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ja.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ka.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ka.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_kk.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_kk.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ko.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ko.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_lt.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_lt.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_lv.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_lv.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_mk.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_mk.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_my.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_my.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_nl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_nl.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_no.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_no.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_pl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_pl.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_pt_BR.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_pt_BR.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_pt_PT.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_pt_PT.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ro.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ro.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ru.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ru.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sd.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sd.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_si.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_si.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sk.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sk.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sl.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sr.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sr.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sr_lat.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sr_lat.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sv.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_sv.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_th.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_th.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_tj.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_tj.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_tr.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_tr.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_uk.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_uk.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ur.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_ur.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_vi.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_vi.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_zh.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_zh.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_zh_TW.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\messages_zh_TW.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_de.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_de.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_es_CL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_es_CL.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_fi.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_fi.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_nl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_nl.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_pt.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\dist\localization\methods_pt.min.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\Gruntfile.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery-1.11.1.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery-1.7.2.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery-1.8.3.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery-1.9.1.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery-3.1.1.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery.form.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery.mockjax-1.5.3.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery.mockjax-2.2.1.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery.mockjax.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\jquery.simulate.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\lib\require.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\accept.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\additional.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\alphanumeric.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\bankaccountNL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\bankorgiroaccountNL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\bic.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\cifES.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\cpfBR.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\creditcard.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\creditcardtypes.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\currency.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\dateFA.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\dateITA.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\dateNL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\extension.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\giroaccountNL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\iban.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\integer.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\ipv4.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\ipv6.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\lettersonly.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\letterswithbasicpunc.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\mobileNL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\mobileUK.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\netmask.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\nieES.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\nifES.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\nipPL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\notEqualTo.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\nowhitespace.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\pattern.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\phoneNL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\phonesUK.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\phoneUK.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\phoneUS.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\postalcodeBR.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\postalCodeCA.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\postalcodeIT.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\postalcodeNL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\postcodeUK.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\require_from_group.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\skip_or_fill_minimum.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\statesUS.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\strippedminlength.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\time.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\time12h.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\url2.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\vinUS.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\zipcodeUS.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\additional\ziprange.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\ajax.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\core.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ar.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_az.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_bg.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_bn_BD.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ca.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_cs.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_da.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_de.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_el.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_es.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_es_AR.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_es_PE.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_et.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_eu.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_fa.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_fi.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_fr.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ge.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_gl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_he.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_hr.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_hu.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_hy_AM.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_id.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_is.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_it.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ja.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ka.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_kk.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ko.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_lt.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_lv.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_mk.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_my.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_nl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_no.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_pl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_pt_BR.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_pt_PT.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ro.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ru.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_sd.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_si.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_sk.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_sl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_sr.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_sr_lat.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_sv.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_th.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_tj.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_tr.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_uk.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_ur.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_vi.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_zh.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\messages_zh_TW.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\methods_de.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\methods_es_CL.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\methods_fi.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\methods_nl.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\src\localization\methods_pt.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\additional\creditcard.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\additional\netmask.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\aria.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\error-placement.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\index.html" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\messages.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\methods.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\rules.js" />
+    <Content Include="Helper\jquery-validation-1.17.0\test\test.js" />
+    <Content Include="Helper\tether-1.3.3\dist\css\tether-theme-arrows-dark.css" />
+    <Content Include="Helper\tether-1.3.3\dist\css\tether-theme-arrows-dark.min.css" />
+    <Content Include="Helper\tether-1.3.3\dist\css\tether-theme-arrows.css" />
+    <Content Include="Helper\tether-1.3.3\dist\css\tether-theme-arrows.min.css" />
+    <Content Include="Helper\tether-1.3.3\dist\css\tether-theme-basic.css" />
+    <Content Include="Helper\tether-1.3.3\dist\css\tether-theme-basic.min.css" />
+    <Content Include="Helper\tether-1.3.3\dist\css\tether.css" />
+    <Content Include="Helper\tether-1.3.3\dist\css\tether.min.css" />
+    <Content Include="Helper\tether-1.3.3\dist\js\tether.js" />
+    <Content Include="Helper\tether-1.3.3\dist\js\tether.min.js" />
+    <Content Include="Helper\tether-1.3.3\docs\css\intro.css" />
+    <Content Include="Helper\tether-1.3.3\docs\js\intro.js" />
+    <Content Include="Helper\tether-1.3.3\docs\js\markAttachment.js" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\browser-demo.html" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\css\browser-demo.css" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\css\prism.css" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\css\welcome.css" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\index.html" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\js\drop.js" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\js\jquery.js" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\js\log.js" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\js\tether-v0.1.3.js" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\js\welcome.js" />
+    <Content Include="Helper\tether-1.3.3\examples\chosen\chosen-sprite%402x.png" />
+    <Content Include="Helper\tether-1.3.3\examples\chosen\chosen-sprite.png" />
+    <Content Include="Helper\tether-1.3.3\examples\chosen\chosen.css" />
+    <Content Include="Helper\tether-1.3.3\examples\chosen\chosen.js" />
+    <Content Include="Helper\tether-1.3.3\examples\chosen\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\common\css\style.css" />
+    <Content Include="Helper\tether-1.3.3\examples\content-visible\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\dolls\dolls.css" />
+    <Content Include="Helper\tether-1.3.3\examples\dolls\dolls.js" />
+    <Content Include="Helper\tether-1.3.3\examples\dolls\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\element-scroll\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\enable-disable\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\facebook\facebook.css" />
+    <Content Include="Helper\tether-1.3.3\examples\facebook\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\out-of-bounds\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\pin\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\resources\css\base.css" />
+    <Content Include="Helper\tether-1.3.3\examples\resources\js\jquery.js" />
+    <Content Include="Helper\tether-1.3.3\examples\resources\js\log.js" />
+    <Content Include="Helper\tether-1.3.3\examples\scroll\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\simple\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\testbed\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\tooltip\index.html" />
+    <Content Include="Helper\tether-1.3.3\examples\viewport\colors.css" />
+    <Content Include="Helper\tether-1.3.3\examples\viewport\index.html" />
+    <Content Include="Helper\tether-1.3.3\gulpfile.js" />
+    <Content Include="Helper\tether-1.3.3\src\js\abutment.js" />
+    <Content Include="Helper\tether-1.3.3\src\js\constraint.js" />
+    <Content Include="Helper\tether-1.3.3\src\js\markAttachment.js" />
+    <Content Include="Helper\tether-1.3.3\src\js\shift.js" />
+    <Content Include="Helper\tether-1.3.3\src\js\tether.js" />
+    <Content Include="Helper\tether-1.3.3\src\js\utils.js" />
+    <Content Include="Models\NhiemVuModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NhiemVuModel.edmx</DependentUpon>
+      <LastGenOutput>NhiemVuModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NhiemVuModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NhiemVuModel.edmx</DependentUpon>
+      <LastGenOutput>NhiemVuModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\ai.0.15.0-build58334.js" />
+    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap.css.map" />
+    <Content Include="Helper\bootstrap-4.0.0-alpha.6-dist\css\bootstrap.min.css.map" />
+    <Content Include="Helper\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Helper\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Helper\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Helper\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Helper\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Helper\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Helper\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Helper\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\fonts\Anorexia.ttf" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\images\image.php" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\image_req.php" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\index.php" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\newsession.php" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\process.php" />
+    <Content Include="Helper\jquery-validation-1.17.0\demo\captcha\rand.php" />
+    <Content Include="Helper\jquery-validation-1.17.0\package.json" />
+    <Content Include="Helper\jquery-validation-1.17.0\README.md" />
+    <Content Include="Helper\tether-1.3.3\.gitignore" />
+    <Content Include="Helper\tether-1.3.3\.hsdoc" />
+    <Content Include="Helper\tether-1.3.3\bower.json" />
+    <Content Include="Helper\tether-1.3.3\CHANGELOG.md" />
+    <Content Include="Helper\tether-1.3.3\component.json" />
+    <Content Include="Helper\tether-1.3.3\CONTRIBUTING.md" />
+    <Content Include="Helper\tether-1.3.3\docs\1-Overview\1-why_you_should_use_tether.md" />
+    <Content Include="Helper\tether-1.3.3\docs\1-Overview\2-repositioning.md" />
+    <Content Include="Helper\tether-1.3.3\docs\1-Overview\3-why_we_dont_support_IE_8.md" />
+    <Content Include="Helper\tether-1.3.3\docs\2-Examples\1-list_of_examples.md" />
+    <Content Include="Helper\tether-1.3.3\docs\2-Examples\2-projects_using_tether.md" />
+    <Content Include="Helper\tether-1.3.3\docs\3-Advanced\1-embedding_tether.md" />
+    <Content Include="Helper\tether-1.3.3\docs\3-Advanced\2-extending_tether.md" />
+    <Content Include="Helper\tether-1.3.3\docs\coffee\intro.coffee" />
+    <Content Include="Helper\tether-1.3.3\docs\intro.md" />
+    <Content Include="Helper\tether-1.3.3\docs\sass\intro.sass" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\coffee\welcome.coffee" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\sass\browser-demo.sass" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\sass\welcome.sass" />
+    <Content Include="Helper\tether-1.3.3\docs\welcome\sass\_inline-block.sass" />
+    <Content Include="Helper\tether-1.3.3\LICENSE" />
+    <Content Include="Helper\tether-1.3.3\package.json" />
+    <Content Include="Helper\tether-1.3.3\README.md" />
+    <Content Include="Helper\tether-1.3.3\src\css\helpers\_tether-theme-arrows.sass" />
+    <Content Include="Helper\tether-1.3.3\src\css\helpers\_tether-theme-basic.sass" />
+    <Content Include="Helper\tether-1.3.3\src\css\helpers\_tether.sass" />
+    <Content Include="Helper\tether-1.3.3\src\css\mixins\_inline-block.sass" />
+    <Content Include="Helper\tether-1.3.3\src\css\mixins\_pie-clearfix.sass" />
+    <Content Include="Helper\tether-1.3.3\src\css\tether-theme-arrows-dark.sass" />
+    <Content Include="Helper\tether-1.3.3\src\css\tether-theme-arrows.sass" />
+    <Content Include="Helper\tether-1.3.3\src\css\tether-theme-basic.sass" />
+    <Content Include="Helper\tether-1.3.3\src\css\tether.sass" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker.css.map" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker3.css.map" />
+    <Content Include="Helper\boostrap-datetimepicker\css\bootstrap-datepicker3.standalone.css.map" />
+    <EntityDeploy Include="Models\NhiemVuModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NhiemVuModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NhiemVuModel.edmx.diagram">
+      <DependentUpon>NhiemVuModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MyScripts\account-index.js" />
+    <Content Include="Scripts\MyScripts\myslidebar.js" />
+    <Content Include="Scripts\MyScripts\myslideshow.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\ChiTietNhiemVu.cshtml" />
+    <Content Include="Views\Account\HinhNhiemVuPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\FileReports\" />
+    <Folder Include="Content\Files\" />
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>16036</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:16036/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
