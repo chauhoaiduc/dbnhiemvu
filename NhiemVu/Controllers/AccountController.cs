@@ -7,6 +7,7 @@ using NhiemVu.Models;
 using NhiemVu.Helper;
 using System.IO;
 using NhiemVu.Filters;
+using System.Globalization;
 
 namespace NhiemVu.Controllers
 {
@@ -178,8 +179,7 @@ namespace NhiemVu.Controllers
                               select new GetBangNhiemVuViewModel
                               {
                                   iMaNhiemVuCode=b.iMaNhiemVuCode,
-                                  dNgayBD = b.dNgayBD,
-                                  dNgayKT = b.dNgayKT,
+                                  dNgayKT = b.dNgayKT.Value.ToString("ddd d MMM", CultureInfo.CreateSpecificCulture("en-US")),
                                   iMaTrangThaiCode = b.iMaTrangThaiCode,
                                   vNguoiDuocGiao = t.vTenDangNhap,
                                   vTenNhiemVu = b.vTenNhiemVu,
